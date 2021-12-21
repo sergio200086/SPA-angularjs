@@ -1,0 +1,35 @@
+.contenedor {
+  margin: 40px;
+  padding: 0 500px;
+  border: 1px solid #ccc;
+  justify-content: center;
+  text-align: center;
+}
+.formulario {
+  border: 1px solid #ccc;
+  text-align: center;
+}
+.tabla {
+  justify-content: center;
+  text-align: center;
+}
+table {
+  border-collapse: collapse;
+}
+th,
+tr,
+td {
+  border: 1px solid #000;
+  width: 150px;
+  height: 45px;
+  vertical-align: middle;
+  text-align: center;
+}
+th {
+  color: #fff;
+  background-color: #555555;
+}
+
+tr:nth-child(odd) td {
+  background-color: #eee;
+}

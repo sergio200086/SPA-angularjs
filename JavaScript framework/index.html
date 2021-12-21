@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="/css/estilo.css" />
+    <title>Movies app</title>
+  </head>
+
+  <body ng-app="myApp" ng-controller="todoCtrl">
+    <div class="contenedor">
+      <h2>Add new</h2>
+      <div class="formulario">
+        <form ng-submit="agregarPeli()">
+          <label for="title"> Title: </label>
+          <input
+            id="title"
+            type="text"
+            ng-model="namePeli"
+            size="20"
+            placeholder="Nombre de la película"
+            ng-required="required"
+          />
+          <br />
+          <label for="year"> Year: </label>
+          <input
+            id="year"
+            type="number"
+            ng-model="yearPeli"
+            size="30"
+            placeholder="Año de la película (Solo números)"
+            ng-required="required"
+            min="0"
+          />
+          <br />
+          <label for="genre"> Genres: </label>
+          <input
+            id="genre"
+            type="text"
+            ng-model="genrePeli"
+            size="23"
+            placeholder="Género de la película "
+            ng-required="required"
+          />
+          <br />
+          <button value="Add New">Agregar</button>
+        </form>
+      </div>
+
+      <br />
+
+      <div class="tabla" ng-grid="gridOptions">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>
+                <a
+                  href="#"
+                  ng-click="sortType = 'year'; sortReverse = !sortReverse"
+                >
+                  Year
+                </a>
+              </th>
+              <th>Genres</th>
+              <th>Quitar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="x in pelis | orderBy:sortType:sortReverse ">
+              <td><span ng-bind="x.title"> </span></td>
+              <td><span ng-bind="x.year"></span></td>
+              <td><span ng-bind="x.genre"></span></td>
+              <td>
+                <button type="submit" ng-click="remove($index)">Borrar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p></p>
+    </div>
+    <script src="/js/index.js"></script>
+  </body>
+</html>
